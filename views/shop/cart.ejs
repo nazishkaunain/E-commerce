@@ -1,0 +1,19 @@
+<%- include("../layouts/header.ejs") -%>
+
+<%- include("../layouts/navigation") -%>
+
+<main>
+  <h1>My Cart</h1>
+  <ul>
+    <% products.map(product => { %>
+    <li><%= product.id %> qty: <%= product.qty %></li>
+    <form class="" action="/cart-delete-item" method="post">
+      <input type="hidden" name="productId" value="<%= product.id %>">
+      <button type="submit" class="btn btn-primary">Remove from the cart</button>
+    </form>
+    <% }); %>
+  </ul>
+  <h2>totalPrice: <%= totalPrice %></h2>
+
+</main>
+<%- include("../layouts/footer.ejs") -%>

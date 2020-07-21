@@ -1,0 +1,29 @@
+<%- include("../layouts/header.ejs") -%>
+
+<%- include("../layouts/navigation.ejs") -%>
+<main>
+  <form class="form-inline my-2 my-lg-0" action="/admin/<% if(editing) {%>edit-product<% } else { %>add-product<%} %>" method="post">
+    <label for="title">Title</label>
+    <input class="form-control mr-sm-2" type="text" name="title" id="title" value="<% if(editing) {%><%= product.title %><% } else { %><%} %>"/>
+
+    <label for="imageUrl">Image</label>
+    <input class="form-control mr-sm-2" type="text" name="imageUrl" id="imageUrl" value="<% if(editing) {%><%= product.imageUrl %><% } else { %><%} %>"/>
+
+    <label for="price">Price</label>
+    <input class="form-control mr-sm-2" type="number" name="price" id="price" step="0.01" value="<% if(editing) {%><%= product.price %><% } else { %><%} %>" />
+
+    <label for="description">Description</label>
+    <textarea name="description" id="description" name="description" rows="5"><% if(editing) {%><%= product.description %><% } else { %><%} %></textarea>
+    <% if(editing) { %>
+      <input type="hidden" name="productId" value="<%= product.id %>">
+    <% } %>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+      <% if(editing) { %>
+        Update proudct
+        <% } else { %>
+           Add product
+           <% } %>
+    </button>
+  </form>
+</main>
+<%- include("../layouts/footer.ejs") -%>

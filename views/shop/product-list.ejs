@@ -1,0 +1,24 @@
+<%- include("../layouts/header.ejs") -%>
+
+<%- include("../layouts/navigation") -%>
+
+<main>
+  <h1>My Products</h1>
+  <p>List of all the products</p>
+  <br>
+  <% products.map((product) => { %>
+  <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= product.title %></h5>
+      <h5 class="card-title"><%= product.imageUrl %></h5>
+      <h5 class="card-title"><%= product.price %></h5>
+      <p class="card-text"><%= product.description %></p>
+      <!--  product/23 example where 23 is the id of the product -->
+      <a href="/products/<%= product.id %>" class="btn btn-primary">Details</a>
+      <%- include("../layouts/add-to-cart.ejs",{product: product}) -%>
+    </div>
+  </div>
+  <% }); %>
+</main>
+<%- include("../layouts/footer.ejs") -%>
